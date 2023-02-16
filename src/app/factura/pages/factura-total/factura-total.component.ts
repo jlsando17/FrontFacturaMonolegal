@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FacturaService } from '../../services/factura.service';
 
 @Component({
   selector: 'app-factura-total',
@@ -7,11 +8,15 @@ import { Component } from '@angular/core';
 })
 export class FacturaTotalComponent {
  
-  termino: string="";
+  
  
-  constructor(){}
-
-  buscar(){
-    console.log(this.termino);
+  constructor(
+    private FacturaService:FacturaService
+  ){
+     this.FacturaService.getFactura().subscribe(resp=>{
+       console.log(resp)
+     })
   }
+
+ 
 }
